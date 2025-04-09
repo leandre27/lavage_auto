@@ -20,26 +20,66 @@
     </div>
   </main>
 
-  <aside :class="[showModal ? 'fixed h-screen w-full' : 'hidden']">
+  <aside v-if="showModal && !showRotationHint" class="fixed h-screen w-full z-50">
     <div class="fixed inset-0 bg-black opacity-90"></div>
-    <div class="fixed inset-0 flex items-center justify-center">
-      <button @click="showModal = false" class=" absolute text-red-600 top-2 right-2 px-4 py-2 ">
-        <svg xmlns="http://www.w3.org/2000/svg" 
-          width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="m15 9-6 6"/>
-          <path d="m9 9 6 6"/>
-        </svg>
+    <div class="fixed inset-0 flex flex-col items-center justify-center space-y-4 px-4">
+      <button @click="showModal = false" class="absolute text-red-600 top-2 right-2 px-4 py-2">
+        <!-- svg -->
       </button>
-      <div class="flex items-center justify-center space-x-2 rounded-lg shadow-lg p-4">
-        <LeftArrow class="absolute left-2"/>
-        <RightArrow class="absolute right-2"/>
-        <img :src="photo_seleted?.avant" :alt="photo_seleted?.alt" class="w-4/12 h-auto mb-4"/>
-        <img :src="photo_seleted?.apres" :alt="photo_seleted?.alt" class="w-4/12 h-auto mb-4"/>
-      </div>
-    </div>
 
+      <div class="flex flex-col items-center justify-center">
+        <div class="relative flex items-center justify-center">
+          <button v-if="selectedIndex > 0" @click="goPrev" class="absolute left-2">
+            <LeftArrow />
+          </button>
+
+          <div class="flex items-center justify-center space-x-2 p-4  rounded-lg shadow-lg">
+            <template v-if="!showSlider">
+              <img
+                :src="photo_seleted?.avant"
+                :alt="photo_seleted?.alt"
+                class="w-4/12 h-auto"
+              />
+              <img
+                :src="photo_seleted?.apres"
+                :alt="photo_seleted?.alt"
+                class="w-4/12 h-auto"
+              />
+            </template>
+
+            <template v-else>
+              <ImgComparisonSlider class="w-[66vw] max-w-[900px] h-auto">
+                <img slot="first" class="w-full object-contain" :src="photo_seleted?.avant" />
+                <img slot="second" class="w-full object-contain" :src="photo_seleted?.apres" />
+              </ImgComparisonSlider>
+            </template>
+          </div>
+
+          <button v-if="selectedIndex < photos.length - 1" @click="goNext" class="absolute right-2">
+            <RightArrow />
+          </button>
+        </div>
+
+        <button
+          class="mt-4 bg-white text-black px-4 py-2 rounded-lg shadow-md font-semibold text-sm"
+          @click="showSlider = !showSlider"  >
+          {{ showSlider ? "Revenir à la vue séparée" : "Comparer avec le slider" }}
+        </button>
+      </div>
+
+
+
+    </div>
   </aside>
+
+
+
+  <!-- rotation d'écran -->
+  <aside v-if="showRotationHint" class="fixed inset-0 bg-blue-500 bg-opacity-90 z-50 flex flex-col items-center text-center justify-center text-white">
+    <img :src="rotation.src" alt="rotation" class="w-11 h-11 object-contain mb-4" />
+    <p class="text-sm font-semibold">Veuillez faire pivoter votre appareil en mode paysage pour voir les photos</p>
+  </aside>
+
 
 
 
@@ -49,7 +89,8 @@
 <script setup>
 import LeftArrow from '@/components/icons/LeftArrow.vue';
 import RightArrow from '@/components/icons/RightArrow.vue';
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch} from 'vue';
+import { ImgComparisonSlider } from '@img-comparison-slider/vue';
 const photos = ref([
   { 
     id: 1,
@@ -143,13 +184,70 @@ const photos = ref([
   },
   
 ]);
-
+const rotation = ref({
+  src: new URL('../assets/images/rotation.gif', import.meta.url).href,
+})
 
 const photo_seleted = ref(null);
 const showModal = ref(false);
+
+
+const isLandscape = ref(window.matchMedia("(orientation: landscape)").matches);
+const showRotationHint = ref(false);
+
+const selectedIndex = ref(0);
+const showSlider = ref(false);
+
 const openModal = (photo) => {
-  photo_seleted.value = photo;
+  checkOrientation();
+  if (!isLandscape.value) {
+    showRotationHint.value = true;
+    return;
+  }
+  selectedIndex.value = photos.value.findIndex(p => p.id === photo.id);
+  photo_seleted.value = photos.value[selectedIndex.value];
   showModal.value = true;
+  showSlider.value = false; // Reset slider view
 };
+
+const goNext = () => {
+  if (selectedIndex.value < photos.value.length - 1) {
+    selectedIndex.value++;
+    photo_seleted.value = photos.value[selectedIndex.value];
+    showSlider.value = false;
+  }
+};
+
+const goPrev = () => {
+  if (selectedIndex.value > 0) {
+    selectedIndex.value--;
+    photo_seleted.value = photos.value[selectedIndex.value];
+    showSlider.value = false;
+  }
+};
+
+const checkOrientation = () => {
+  isLandscape.value = window.matchMedia("(orientation: landscape)").matches;
+};
+
+
+
+const handleOrientationChange = () => {
+  checkOrientation();
+  if (isLandscape.value && showRotationHint.value) {
+    showRotationHint.value = false;
+    showModal.value = true;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('orientationchange', handleOrientationChange);
+  window.addEventListener('resize', handleOrientationChange);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('orientationchange', handleOrientationChange);
+  window.removeEventListener('resize', handleOrientationChange);
+});
 
 </script>
