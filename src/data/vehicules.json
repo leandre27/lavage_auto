@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "avant": "src/assets/images/vehicule/jeep_avant.jpg",
+        "apres": "src/assets/images/vehicule/jeep_apres.jpg",
+        "alt": "jeep avant-apres"
+    },
+    {
+        "id": 2,
+        "avant": "src/assets/images/vehicule/avant_1.jpg",
+        "apres": "src/assets/images/vehicule/apres_1.jpg",
+        "alt": "jeep avant-apres"
+    },
+    {
+        "id": 3,
+        "avant": "src/assets/images/vehicule/avant_2.jpg",
+        "apres": "src/assets/images/vehicule/apres_2.jpg",
+        "alt": "jeep avant-apres"
+    },
+    {
+        "id": 4,
+        "avant": "src/assets/images/vehicule/avant_3.jpg",
+        "apres": "src/assets/images/vehicule/apres_3.jpg",
+        "alt": "jeep avant-apres"
+    }
+]
