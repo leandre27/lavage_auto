@@ -1,5 +1,7 @@
 <template>
+  
 
+  
   <transition name="fade">
     <div v-if="isLoading">
       <Loader/>
@@ -52,6 +54,8 @@ import Gallery from '@/components/Gallery.vue';
 import Modal from '@/components/Modal.vue';
 import vehicule_data from '@/data/vehicules.json';
 import { ref, onMounted, onBeforeUnmount, watch} from 'vue';
+
+
 // import RotationHint from '@/components/RotationHint.vue';
 
 gsap.registerPlugin(ScrollTrigger);
