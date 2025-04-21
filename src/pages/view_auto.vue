@@ -35,7 +35,7 @@
 
 
   <!-- rotation d'écran -->
-  <RotationHint v-if="showRotationHint" :src="rotation.src" />
+  <!-- <RotationHint v-if="showRotationHint" :src="rotation.src" /> -->
 
 
 
@@ -168,7 +168,7 @@ const isLoading = ref(true);
 
 
 
-// const isLandscape = ref(window.matchMedia("(orientation: landscape)").matches);
+const isLandscape = ref(window.matchMedia("(orientation: landscape)").matches);
 // const showRotationHint = ref(false);
 
 const selectedIndex = ref(0);
@@ -176,10 +176,7 @@ const showSlider = ref(false);
 
 const openModal = (photo) => {
   checkOrientation();
-  if (!isLandscape.value) {
-    showRotationHint.value = true;
-    return;
-  }
+
   // selectedIndex.value = photos.value.find(p => p.id === photo.id);
   photo_seleted.value = photos.value.find(p => p.id === photo.id);;
   showModal.value = true;
@@ -208,13 +205,13 @@ const checkOrientation = () => {
 
 
 
-// const handleOrientationChange = () => {
-//   checkOrientation();
-//   if (isLandscape.value && showRotationHint.value) {
-//     showRotationHint.value = false;
-//     showModal.value = true;
-//   }
-// };
+const handleOrientationChange = () => {
+  checkOrientation();
+  if (isLandscape.value && showRotationHint.value) {
+    showRotationHint.value = false;
+    showModal.value = true;
+  }
+};
 
 onMounted(() => {
   window.addEventListener('orientationchange', handleOrientationChange);
