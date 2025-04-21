@@ -52,7 +52,7 @@ import Gallery from '@/components/Gallery.vue';
 import Modal from '@/components/Modal.vue';
 import vehicule_data from '@/data/vehicules.json';
 import { ref, onMounted, onBeforeUnmount, watch} from 'vue';
-import RotationHint from '@/components/RotationHint.vue';
+// import RotationHint from '@/components/RotationHint.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,9 +158,9 @@ const photos = ref(vehicule_data.map((item, index) => ({
   alt: `Photo ${index + 1}`,
 }))); 
 
-const rotation = ref({
-  src: new URL('../assets/images/rotation.gif', import.meta.url).href,
-})
+// const rotation = ref({
+//   src: new URL('../assets/images/rotation.gif', import.meta.url).href,
+// })
 
 const photo_seleted = ref(null);
 const showModal = ref(false);
@@ -168,8 +168,8 @@ const isLoading = ref(true);
 
 
 
-const isLandscape = ref(window.matchMedia("(orientation: landscape)").matches);
-const showRotationHint = ref(false);
+// const isLandscape = ref(window.matchMedia("(orientation: landscape)").matches);
+// const showRotationHint = ref(false);
 
 const selectedIndex = ref(0);
 const showSlider = ref(false);
@@ -208,13 +208,13 @@ const checkOrientation = () => {
 
 
 
-const handleOrientationChange = () => {
-  checkOrientation();
-  if (isLandscape.value && showRotationHint.value) {
-    showRotationHint.value = false;
-    showModal.value = true;
-  }
-};
+// const handleOrientationChange = () => {
+//   checkOrientation();
+//   if (isLandscape.value && showRotationHint.value) {
+//     showRotationHint.value = false;
+//     showModal.value = true;
+//   }
+// };
 
 onMounted(() => {
   window.addEventListener('orientationchange', handleOrientationChange);
