@@ -15,7 +15,7 @@
       </div>
 
       <p class="mt-2 dark:text-white">Voici quelques-unes de nos plus belles photos</p>
-      <Gallery   :photos="vehicule_data"  :openModal="openModal" />
+      <Gallery   :photos="photos"  :openModal="openModal" />
         
     </main>
   </div>
@@ -56,99 +56,107 @@ import RotationHint from '@/components/RotationHint.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const photos = ref([
-  { 
-    id: 1,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 2' , 
-  },
-  { 
-    id: 2,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 2' , 
-  },
-  { 
-    id: 3,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 3' , 
-  },
-  { 
-    id: 4,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 4' , 
-  },
-  { 
-    id: 5,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 5' , 
-  },
-  { 
-    id: 6,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 6' , 
-  },
-  { 
-    id: 7,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 7' , 
-  },
-  { 
-    id: 8,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 8' , 
-  },
-  { 
-    id: 9,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 9' , 
-  },
-  { 
-    id: 10,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 10' , 
-  },
-  { 
-    id: 11,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 11' , 
-  },
-  { 
-    id: 12,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 12' , 
-  },
-  { 
-    id: 13,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 13' , 
-  },
-  { 
-    id: 14,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 14' , 
-  },
-  { 
-    id: 15,
-    avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
-    apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
-    alt: 'Photo 15' , 
-  },
+// const photos = ref([
+//   { 
+//     id: 1,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 2' , 
+//   },
+//   { 
+//     id: 2,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 2' , 
+//   },
+//   { 
+//     id: 3,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 3' , 
+//   },
+//   { 
+//     id: 4,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 4' , 
+//   },
+//   { 
+//     id: 5,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 5' , 
+//   },
+//   { 
+//     id: 6,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 6' , 
+//   },
+//   { 
+//     id: 7,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 7' , 
+//   },
+//   { 
+//     id: 8,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 8' , 
+//   },
+//   { 
+//     id: 9,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 9' , 
+//   },
+//   { 
+//     id: 10,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 10' , 
+//   },
+//   { 
+//     id: 11,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 11' , 
+//   },
+//   { 
+//     id: 12,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 12' , 
+//   },
+//   { 
+//     id: 13,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 13' , 
+//   },
+//   { 
+//     id: 14,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 14' , 
+//   },
+//   { 
+//     id: 15,
+//     avant: new URL('../assets/images/jeep_avant.jpg', import.meta.url).href,
+//     apres: new URL('../assets/images/jeep_apres.jpg', import.meta.url).href,
+//     alt: 'Photo 15' , 
+//   },
   
-]);
+// ]);
+
+
+const photos = ref(vehicule_data.map((item, index) => ({
+  id: index + 1,
+  avant: new URL(`../assets/images/vehicule/${item.avant}`, import.meta.url).href,
+  apres: new URL(`../assets/images/vehicule/${item.apres}`, import.meta.url).href,
+  alt: `Photo ${index + 1}`,
+}))); 
 
 const rotation = ref({
   src: new URL('../assets/images/rotation.gif', import.meta.url).href,
@@ -158,7 +166,6 @@ const photo_seleted = ref(null);
 const showModal = ref(false);
 const isLoading = ref(true);
 
-console.log();
 
 
 const isLandscape = ref(window.matchMedia("(orientation: landscape)").matches);

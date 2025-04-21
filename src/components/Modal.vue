@@ -8,7 +8,6 @@
 
       <div class="relative flex items-center justify-center">
         <button v-if="hasPrev" @click="$emit('prev')" class="absolute left-2"><LeftArrow /></button>
-        <p class="text-white">{{ photo }}</p>
         <div class="flex items-center justify-center space-x-2 p-4 rounded-lg shadow-lg">
           <template v-if="!showSlider">
             <img :src="photo.avant" :alt="photo.alt" class="w-2/5 h-auto" />
