@@ -5,7 +5,7 @@
       :class="{ 'opacity-0': fadeOut }"
     >
       <span class="absolute text-2xl sm:text-4xl font-bold uppercase text-slate-900 z-10 animate-scale-text">
-        LAVAGE AUTO
+        Wetjet
       </span>
   
       <div
