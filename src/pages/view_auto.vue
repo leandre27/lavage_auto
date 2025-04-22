@@ -3,10 +3,12 @@
     <div class="p-4">
       <!-- Header -->
       <header class="text-center mb-8">
-        <h1 class="text-3xl font-extrabold tracking-wide leading-tight">
-          Galerie <span :class="isDark ? 'text-purple-500' : 'text-indigo-600'">Voitures</span>
-        </h1>
-        <p :class="isDark ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">Comparaison Avant / Après lavage</p>
+        <router-link to="/">
+          <h1 class="text-3xl font-extrabold tracking-wide leading-tight">
+            Galerie <span :class="isDark ? 'text-purple-500' : 'text-indigo-600'">Voitures</span>
+          </h1>
+          <p :class="isDark ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">Comparaison Avant / Après lavage</p>
+        </router-link>
 
         <button
           class="mt-4 px-4 py-1 rounded-full border text-xs transition-all duration-300"
