@@ -21,7 +21,7 @@
               :class="isDark ? 'bg-gray-800 text-white border-gray-600' : 'bg-gray-200 text-gray-800 border-gray-400'"
               @click="toggleDark"
             >
-              {{ isDark ? 'Mode Jour ☀️' : 'Mode Nuit 🌙' }}
+              {{ isDark ? $t('mode-jour') : $t('mode-nuit') }}
             </button>
           </div>
         </header>
@@ -44,8 +44,10 @@
   
       <!-- Modal Swiper -->
       <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
-        <button @click="closeModal" class="absolute top-4 right-6 text-white text-2xl z-50">✖</button>
-        <swiper
+          <button class="absolute top-5 right-4 text-xl text-red-700 cursor-pointer z-50" @click="closeModal">
+            <Close/>
+          </button>
+          <swiper
           :initial-slide="selectedIndex"
           :slides-per-view="1"
           class="w-[90%] max-w-4xl rounded-2xl"

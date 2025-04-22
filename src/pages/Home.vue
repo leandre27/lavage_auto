@@ -21,8 +21,8 @@
             :class="isDark ? 'bg-gray-800 text-white border-gray-600' : 'bg-gray-200 text-gray-800 border-gray-400'"
             @click="toggleDark"
           >
-            {{ isDark ? 'Mode Jour ☀️' : 'Mode Nuit 🌙' }}
-          </button>
+          {{ isDark ? $t('mode-jour') : $t('mode-nuit') }}
+        </button>
         </header>
   
         <!-- Services -->

@@ -23,5 +23,7 @@
     "after": "Après",
     "next": "Suivant",
     "prev": "Précédent",
-    "close": "Fermer"
+    "close": "Fermer",
+    "mode-jour": "Mode Jour ☀️",
+    "mode-nuit": "Mode Nuit 🌙"
   }

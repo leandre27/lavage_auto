@@ -19,8 +19,8 @@
             :class="isDark ? 'bg-gray-800 text-white border-gray-600' : 'bg-gray-200 text-gray-800 border-gray-400'"
             @click="toggleDark"
           >
-            {{ isDark ? 'Mode Jour ☀️' : 'Mode Nuit 🌙' }}
-          </button>
+          {{ isDark ? $t('mode-jour') : $t('mode-nuit') }}
+        </button>
         </div>
       </header>
 
@@ -43,7 +43,9 @@
   <div class="relative w-full max-w-6xl h-[90vh] flex flex-col items-center justify-center overflow-hidden">
 
     <!-- Bouton Fermer -->
-    <button class="absolute top-5 right-6 text-3xl text-white hover:text-red-400 z-50" @click="closeModal">✖</button>
+    <button class="absolute top-5 right-4 text-xl text-red-700 cursor-pointer z-50" @click="closeModal">
+      <Close/>
+    </button>
 
     <!-- Swiper -->
     <Swiper
@@ -81,7 +83,10 @@ import 'swiper/css/navigation'
 import { Navigation } from 'swiper/modules'
 
 
+
+
 import { useI18n } from 'vue-i18n'
+import Close from '@/components/icons/Close.vue';
 
 const { locale } = useI18n()
 const currentLang = ref(locale.value)
