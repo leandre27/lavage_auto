@@ -4,7 +4,7 @@
         <!-- Header -->
         <header class="text-center mb-8">
           <h1 class="text-3xl font-extrabold tracking-wide leading-tight">
-            CLEAN<span :class="isDark ? 'text-purple-500' : 'text-indigo-600'">XPERT</span>
+            WET<span :class="isDark ? 'text-purple-500' : 'text-indigo-600'">JET</span>
           </h1>
           <p :class="isDark ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">
             Lavage automobile et de sols haut de gamme
