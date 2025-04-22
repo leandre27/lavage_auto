@@ -1,37 +1,37 @@
 [
     {
         "id": 1,
-        "img": "src/assets/images/terasse/1.jpg",
+        "img": "1.jpg",
         "alt": "avant-apres 1"
     },
     {
         "id": 2,
-        "img": "src/assets/images/terasse/2.jpg",
+        "img": "2.jpg",
         "alt": "avant-apres 2"
     },
     {
         "id": 3,
-        "img": "src/assets/images/terasse/3.jpg",
+        "img": "3.jpg",
         "alt": "avant-apres 3"
     },
     {
         "id": 4,
-        "img": "src/assets/images/terasse/4.jpg",
+        "img": "4.jpg",
         "alt": "avant-apres 4"
     },
     {
         "id": 5,
-        "img": "src/assets/images/terasse/5.jpg",
+        "img": "5.jpg",
         "alt": "avant-apres 5"
     },
     {
         "id": 6,
-        "img": "src/assets/images/terasse/6.jpg",
+        "img": "6.jpg",
         "alt": "avant-apres 6"
     },
     {
         "id": 7,
-        "img": "src/assets/images/terasse/7.jpg",
+        "img": "7.jpg",
         "alt": "avant-apres 7"
     }
 ]

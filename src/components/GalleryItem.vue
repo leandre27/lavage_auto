@@ -1,14 +1,12 @@
 <template>
-    <div 
-      class="flex justify-center space-x-0.5 items-center rounded-md shadow-xl overflow-hidden cursor-pointer"
-      @click="$emit('click')"
-    >
-      <img :src="photo.avant" :alt="photo.alt" class="w-full h-44 object-cover" />
-      <img :src="photo.apres" :alt="photo.alt" class="w-full h-44 object-cover" />
+  <div class="cursor-pointer hover:scale-105 transition-transform duration-300 shadow-lg rounded overflow-hidden">
+    <div class="flex">
+      <img :src="photo.avant" :alt="photo.alt" class="w-1/2 object-cover h-48" />
+      <img :src="photo.apres" :alt="photo.alt" class="w-1/2 object-cover h-48" />
     </div>
-  </template>
-  
-  <script setup>
-  defineProps(['photo']);
-  </script>
-  
+  </div>
+</template>
+
+<script setup>
+defineProps(['photo']);
+</script>

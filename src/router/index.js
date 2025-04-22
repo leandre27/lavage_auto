@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/pages/view_auto.vue'
+import view_auto from '@/pages/view_auto.vue'
+import Home from '@/pages/Home.vue'
+import Terasse from '@/pages/Terasse.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +10,18 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+      
+    },
+    {
+      path: '/vehicule',
+      name: 'vehicule',
+      component: view_auto,
+      
+    },
+    {
+      path: '/sol',
+      name: 'terasse',
+      component: Terasse,
       
     },
   ],

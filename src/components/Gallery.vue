@@ -1,17 +1,17 @@
 <template>
-    <div class="gallery-item w-full grid max-sm:grid-cols-1 md:grid-cols-2 grid-cols-3 space-y-6 space-x-2 items-center justify-center mt-4">
-      <GalleryItem
-        v-for="photo in photos"
-        :key="photo.id"
-        :photo="photo"
-        @click="openModal(photo)"
-      />
-    </div>
-  </template>
-  
-  <script setup>
-  import GalleryItem from './GalleryItem.vue';
-  
-  defineProps(['photos', 'openModal']);
-  </script>
-  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <GalleryItem
+      v-for="(photo, index) in photos"
+      :key="photo.id"
+      :photo="photo"
+      @click="() => $emit('open', index)"
+    />
+  </div>
+</template>
+
+<script setup>
+import GalleryItem from './GalleryItem.vue';
+
+defineProps(['photos']);
+defineEmits(['open']);
+</script>
