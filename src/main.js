@@ -10,8 +10,8 @@ import en from './locales/en.json'
 
 const app = createSSRApp(App)
 const i18n = createI18n({
-    locale: 'fr', // langue par défaut
-    fallbackLocale: 'en',
+    locale: 'en', // langue par défaut
+    fallbackLocale: 'fr',
     messages: {
         fr,
         en
