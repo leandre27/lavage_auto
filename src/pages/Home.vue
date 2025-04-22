@@ -70,11 +70,14 @@
         </section>
       </div>
     </div>
+
+    <Loader/>
   </template>
   
   <script setup>
   import { ref, onMounted } from 'vue'
   import { useRouter } from 'vue-router'
+  import Loader from '@/components/Loader.vue'
   import gsap from 'gsap'
   
   const router = useRouter()

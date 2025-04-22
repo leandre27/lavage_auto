@@ -63,12 +63,14 @@
   </div>
 </div>
   </div>
+  <Loader/>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import vehicule_data from '@/data/vehicules.json';
+import Loader from '@/components/Loader.vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { Navigation } from 'swiper/modules'

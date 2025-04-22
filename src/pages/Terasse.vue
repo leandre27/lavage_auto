@@ -52,6 +52,7 @@
         </swiper>
       </div>
     </div>
+    <Loader/>
   </template>
   
   <script setup>
@@ -61,6 +62,8 @@
   import 'swiper/css/navigation'
   import 'swiper/css/pagination'
   import Terasse_data from '@/data/terasse.json'
+  import Loader from '@/components/Loader.vue'
+
   
   const isDark = ref(true)
   const toggleDark = () => (isDark.value = !isDark.value)
