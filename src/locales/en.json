@@ -1,0 +1,27 @@
+{
+  "vehicule": "Vehicle",
+  "terrasse": "Terrace",
+  "home": "High-end car and floor cleaning",
+  "subtitle-car": {
+    "title": "Car Cleaning",
+    "describe": "Interior, exterior, rims, polish, engine cleaning..."
+  },
+  "subtitle-sol": {
+    "title": "Floor Cleaning",
+    "describe": "Industrial floors, garages, parking lots, tiles & specific surfaces."
+  },
+  "car": {
+    "title": "Before / After Cleaning Comparison",
+    "describe": "Interior, exterior, rims, polish, engine cleaning..."
+  },
+  "sol": {
+    "title": "Discover Our Terrace Cleaning",
+    "describe": "Industrial floors, garages, parking lots, tiles & specific surfaces."
+  },
+  "gallery": "Gallery",
+  "before": "Before",
+  "after": "After",
+  "next": "Next",
+  "prev": "Previous",
+  "close": "Close"
+}

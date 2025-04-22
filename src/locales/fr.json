@@ -1,0 +1,27 @@
+{
+    "vehicule": "Vehicule",
+    "terrasse": "Terrasse",
+    "home": "Lavage automobile et de sols haut de gamme",
+    "subtitle-car": {
+      "title": "Lavage automobile",
+      "describe": "Nettoyage intérieur, extérieur, jantes, polish, moteur..."
+    },
+    "subtitle-sol": {
+      "title": "Lavage de Sols",
+      "describe": "Sols industriels, garages, parkings, carreaux & surfaces spécifiques."
+    },
+    "car": {
+      "title": "Comparaison Avant / Après lavage",
+      "describe": "Nettoyage intérieur, extérieur, jantes, polish, moteur..."
+    },
+    "sol": {
+      "title": "Découvrez nos nettoyages de terrasses",
+      "describe": "Sols industriels, garages, parkings, carreaux & surfaces spécifiques."
+    },
+    "gallery": "Galerie",
+    "before": "Avant",
+    "after": "Après",
+    "next": "Suivant",
+    "prev": "Précédent",
+    "close": "Fermer"
+  }

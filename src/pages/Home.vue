@@ -3,12 +3,17 @@
       <div class="p-4">
         <!-- Header -->
         <header class="text-center mb-8">
-          <h1 class="text-3xl font-extrabold tracking-wide leading-tight">
-            WET<span :class="isDark ? 'text-purple-500' : 'text-indigo-600'">JET</span>
-          </h1>
-          <p :class="isDark ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">
-            Lavage automobile et de sols haut de gamme
-          </p>
+            <h1 class="text-3xl font-extrabold tracking-wide leading-tight">
+              WET<span :class="isDark ? 'text-purple-500' : 'text-indigo-600'">JET</span>
+            </h1>
+            <p :class="isDark ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">
+              {{ $t('home') }}
+            </p>
+            <div class="flex flex-col mt-2">
+              <button @click="switchLang">
+                🌐 {{ currentLang === 'fr' ? 'English' : 'Français' }}
+              </button>
+            </div>
   
           <!-- Toggle Mode -->
           <button
@@ -36,11 +41,11 @@
             <div
               class="absolute inset-0 flex flex-col justify-end p-4 bg-black/40 backdrop-blur-sm"
             >
-              <h2 class="text-xl font-bold drop-shadow-[0_2px_4px_rgba(139,92,246,0.8)]">
-                Lavage de Voitures
+              <h2 class="text-white text-xl font-bold drop-shadow-[0_2px_4px_rgba(139,92,246,0.8)]">
+                {{ $t('subtitle-car.title') }}
               </h2>
               <p class="text-sm mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] text-gray-200">
-                Nettoyage intérieur, extérieur, jantes, polish, moteur...
+                {{ $t('subtitle-car.describe') }}
               </p>
             </div>
           </div>
@@ -59,26 +64,35 @@
             <div
               class="absolute inset-0 flex flex-col justify-end p-4 bg-black/40 backdrop-blur-sm"
             >
-              <h2 class="text-xl font-bold drop-shadow-[0_2px_4px_rgba(99,102,241,0.8)]">
-                Lavage de Sols
+              <h2 class="text-white text-xl font-bold drop-shadow-[0_2px_4px_rgba(99,102,241,0.8)]">
+                {{ $t('subtitle-sol.title') }}
               </h2>
               <p class="text-sm mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] text-gray-200">
-                Sols industriels, garages, parkings, carreaux & surfaces spécifiques.
-              </p>
+                {{ $t('subtitle-sol.describe') }}              </p>
             </div>
           </div>
         </section>
       </div>
     </div>
+    
 
     <Loader/>
   </template>
   
-  <script setup>
-  import { ref, onMounted } from 'vue'
-  import { useRouter } from 'vue-router'
-  import Loader from '@/components/Loader.vue'
-  import gsap from 'gsap'
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import Loader from '@/components/Loader.vue'
+import gsap from 'gsap'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+const currentLang = ref(locale.value)
+
+const switchLang = () => {
+  currentLang.value = currentLang.value === 'fr' ? 'en' : 'fr'
+  locale.value = currentLang.value
+}
   
   const router = useRouter()
   const voitureCard = ref(null)

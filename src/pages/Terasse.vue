@@ -5,19 +5,25 @@
         <header class="text-center mb-8">
           <router-link to="/">
               <h1 class="text-3xl font-extrabold tracking-wide leading-tight">
-                Galerie <span :class="isDark ? 'text-purple-500' : 'text-indigo-600'">Terrasse</span>
+                {{ $t('gallery') }} <span :class="isDark ? 'text-purple-500' : 'text-indigo-600'"> {{ $t('terrasse') }} </span>
               </h1>
               <p :class="isDark ? 'text-gray-400' : 'text-gray-600'" class="text-sm mt-2">
-                Découvrez nos nettoyages de terrasses
+                {{ $t('sol.title') }}
               </p>
           </router-link>
-          <button
-            class="mt-4 px-4 py-1 rounded-full border text-xs transition-all duration-300"
-            :class="isDark ? 'bg-gray-800 text-white border-gray-600' : 'bg-gray-200 text-gray-800 border-gray-400'"
-            @click="toggleDark"
-          >
-            {{ isDark ? 'Mode Jour ☀️' : 'Mode Nuit 🌙' }}
-          </button>
+
+          <div class=" flex flex-col mt-2">
+            <button @click="switchLang">
+              🌐 {{ currentLang === 'fr' ? 'English' : 'Français' }}
+            </button>
+            <button
+              class="mt-4 px-4 py-1 rounded-full border text-xs transition-all duration-300"
+              :class="isDark ? 'bg-gray-800 text-white border-gray-600' : 'bg-gray-200 text-gray-800 border-gray-400'"
+              @click="toggleDark"
+            >
+              {{ isDark ? 'Mode Jour ☀️' : 'Mode Nuit 🌙' }}
+            </button>
+          </div>
         </header>
   
         <!-- Galerie -->
@@ -63,6 +69,17 @@
   import 'swiper/css/pagination'
   import Terasse_data from '@/data/terasse.json'
   import Loader from '@/components/Loader.vue'
+
+  import { useI18n } from 'vue-i18n'
+
+  const { locale } = useI18n()
+  const currentLang = ref(locale.value)
+
+  const switchLang = () => {
+    currentLang.value = currentLang.value === 'fr' ? 'en' : 'fr'
+    locale.value = currentLang.value
+  }
+  
 
   
   const isDark = ref(true)
